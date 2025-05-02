@@ -6,6 +6,7 @@
   --foreground: #171717;
   --primary-color: #465b52; /* For navbar */
   --secondary-color: #b2a59b; /* For H1 */
+  --primary-hover-color: #5a7063;
 }
 
 @theme inline {
@@ -47,9 +48,8 @@ h1 {
   color: var(--secondary-color); /* Apply custom color to H1 */
 }
 
-/* Navbar Style */
-.navbar {
-  background-color: var(--primary-color); /* Set navbar background color */
+a:hover {
+  color: var(--primary-hover-color);
 }
 
 /* You can define more specific color classes as needed */
