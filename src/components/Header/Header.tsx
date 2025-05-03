@@ -11,7 +11,7 @@ export const Header = () => {
   const toggleMenu = () => setIsOpen(!isOpen);
 
   return (
-    <header className="bg-white shadow-md">
+    <header className="bg-white/70 shadow-md">
       {" "}
       {/* White background for the header */}
       <div className="container mx-auto flex items-center justify-between p-4">
@@ -20,11 +20,14 @@ export const Header = () => {
           <Image
             src="/images/logo.png"
             alt="Markéta logo"
-            width={60}
-            height={60}
+            width={80}
+            height={80}
           />
           <div className="flex flex-col md:flex-row md:items-baseline md:space-x-2">
-            <span className="text-2xl md:text-3xl font-bold text-secondary leading-none align-middle">
+            <span
+              className="text-2xl md:text-4xl lg:text-5xl font-extrabold text-secondary leading-none align-middle"
+              style={{ textShadow: "0 1px 1px rgba(0,0,0,0.1)" }}
+            >
               Markéta
             </span>
             <span className="text-sm md:text-base font-light text-secondary leading-none align-middle">
