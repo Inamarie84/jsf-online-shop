@@ -12,8 +12,6 @@ export const Header = () => {
 
   return (
     <header className="bg-white/70 shadow-md">
-      {" "}
-      {/* White background for the header */}
       <div className="container mx-auto flex items-center justify-between p-4">
         {/* Logo + title block */}
         <Link href="/" className="flex items-center space-x-2">
@@ -40,21 +38,22 @@ export const Header = () => {
         <nav className="hidden md:flex space-x-6 items-center">
           <Link
             href="/"
-            className="font-semibold text-primary hover:text-primary-hover-color transition-color"
+            className="font-semibold text-primary hover:text-primaryHover transition-colors"
           >
             Home
           </Link>
-          <Link
-            href="/cart"
-            className="font-semibold text-primary hover:text-primary-hover-color transition-color"
-          >
-            Cart
-          </Link>
+
           <Link
             href="/contact"
-            className="font-semibold text-primary hover:text-primary-hover-color transition-color"
+            className="font-semibold text-primary hover:text-primaryHover transition-colors"
           >
             Contact
+          </Link>
+          <Link
+            href="/cart"
+            className="font-semibold text-primary hover:text-primaryHover transition-colors"
+          >
+            Cart
           </Link>
         </nav>
 
@@ -67,30 +66,32 @@ export const Header = () => {
           {isOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
+
       {/* Mobile nav */}
       {isOpen && (
         <nav className="md:hidden bg-white shadow-md">
           <div className="flex flex-col items-center space-y-4 py-4">
             <Link
               href="/"
-              className="font-semibold text-primary hover:text-primary-hover-color transition-color"
+              className="font-semibold text-primary hover:text-primaryHover transition-colors"
               onClick={() => setIsOpen(false)}
             >
               Home
             </Link>
-            <Link
-              href="/cart"
-              className="font-semibold text-primary hover:text-primary-hover-color transition-color"
-              onClick={() => setIsOpen(false)}
-            >
-              Cart
-            </Link>
+
             <Link
               href="/contact"
-              className="font-semibold text-primary hover:text-primary-hover-color transition-color"
+              className="font-semibold text-primary hover:text-primaryHover transition-colors"
               onClick={() => setIsOpen(false)}
             >
               Contact
+            </Link>
+            <Link
+              href="/cart"
+              className="font-semibold text-primary hover:text-primaryHover transition-colors"
+              onClick={() => setIsOpen(false)}
+            >
+              Cart
             </Link>
           </div>
         </nav>
