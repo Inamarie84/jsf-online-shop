@@ -3,7 +3,7 @@
 
 @layer base {
   body {
-    @apply bg-white/70 text-[#2a2a2a] font-sans; /* Use the color code directly here */
+    @apply bg-white/70 font-sans;
   }
 
   /* All headings use Playfair Display */
@@ -16,13 +16,18 @@
     @apply font-serif;
   }
 
-  /* H1 uses secondary color */
+  /* H1 uses secondary color from Tailwind theme */
   h1 {
-    @apply text-[#b2a59b]; /* Use the color code directly here */
+    @apply text-secondary;
   }
 
-  /* Navbar links hover */
+  /* nav uses primary color from Tailwind theme */
+  nav {
+    @apply text-primary;
+  }
+
+  /* Navbar links hover use primaryHover color */
   a:hover {
-    @apply text-[#5a7063]; /* Use the color code directly here */
+    @apply text-primaryHover;
   }
 }
