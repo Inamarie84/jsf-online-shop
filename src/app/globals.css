@@ -1,33 +1,40 @@
 @import "tailwindcss";
-@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@400;600&display=swap");
 
-@layer base {
-  body {
-    @apply bg-white/70 font-sans;
-  }
+/* Import the fonts using @font-face */
+@font-face {
+  font-family: "Poppins";
+  src: url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
+  font-weight: 400 600;
+  font-style: normal;
+  font-display: swap;
+}
 
-  /* All headings use Playfair Display */
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    @apply font-serif;
-  }
+@font-face {
+  font-family: "Playfair Display";
+  src: url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap");
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+}
 
-  /* H1 uses secondary color from Tailwind theme */
-  h1 {
-    @apply text-secondary;
-  }
+/* Use Tailwind v4's @theme block */
+@theme {
+  /* Fonts */
+  --font-sans: "Poppins", sans-serif;
+  --font-serif: "Playfair Display", serif;
 
-  /* nav uses primary color from Tailwind theme */
-  nav {
-    @apply text-primary;
-  }
+  /* Colors */
+  --color-background: #ffffff;
+  --color-primary: #465b52;
+  --color-primary-hover: #5a7063;
+  --color-secondary: #b2a59b;
+  --color-main-text: #2a2a2a;
+  --color-discount: #e32e2e;
+}
 
-  /* Navbar links hover use primaryHover color */
-  a:hover {
-    @apply text-primaryHover;
-  }
+/* Global styles */
+body {
+  background-color: var(--color-background);
+  color: var(--color-main-text);
+  font-family: var(--font-sans);
 }

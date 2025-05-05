@@ -51,9 +51,7 @@ export function ProductCard({ product }: ProductCardProps) {
                   ${price.toFixed(2)}
                 </span>
               )}
-              <span className="text-primary font-bold">
-                ${discountedPrice.toFixed(2)}
-              </span>
+              <span className="font-bold">${discountedPrice.toFixed(2)}</span>
             </div>
             <p className="text-yellow-500 text-sm">⭐ {rating}</p>
             <p className="text-sm text-gray-600 mt-2 line-clamp-2">

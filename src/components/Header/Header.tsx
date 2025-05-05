@@ -23,12 +23,12 @@ export const Header = () => {
           />
           <div className="flex flex-col md:flex-row md:items-baseline md:space-x-2">
             <span
-              className="text-2xl md:text-4xl lg:text-5xl font-extrabold text-secondary leading-none align-middle"
+              className="text-2xl md:text-4xl lg:text-5xl font-extrabold leading-none align-middle"
               style={{ textShadow: "0 1px 1px rgba(0,0,0,0.1)" }}
             >
               Markéta
             </span>
-            <span className="text-sm md:text-base font-light text-secondary leading-none align-middle">
+            <span className="text-sm md:text-base font-light leading-none align-middle">
               TheOnlineShop
             </span>
           </div>
@@ -36,23 +36,14 @@ export const Header = () => {
 
         {/* Desktop nav */}
         <nav className="hidden md:flex space-x-6 items-center">
-          <Link
-            href="/"
-            className="font-semibold text-primary hover:text-primaryHover transition-colors"
-          >
+          <Link href="/" className="font-semibold transition-colors">
             Home
           </Link>
 
-          <Link
-            href="/contact"
-            className="font-semibold text-primary hover:text-primaryHover transition-colors"
-          >
+          <Link href="/contact" className="font-semibold  transition-colors">
             Contact
           </Link>
-          <Link
-            href="/cart"
-            className="font-semibold text-primary hover:text-primaryHover transition-colors"
-          >
+          <Link href="/cart" className="font-semibold  transition-colors">
             Cart
           </Link>
         </nav>
@@ -73,7 +64,7 @@ export const Header = () => {
           <div className="flex flex-col items-center space-y-4 py-4">
             <Link
               href="/"
-              className="font-semibold text-primary hover:text-primaryHover transition-colors"
+              className="font-semibold transition-colors"
               onClick={() => setIsOpen(false)}
             >
               Home
@@ -81,14 +72,14 @@ export const Header = () => {
 
             <Link
               href="/contact"
-              className="font-semibold text-primary hover:text-primaryHover transition-colors"
+              className="font-semibold  transition-colors"
               onClick={() => setIsOpen(false)}
             >
               Contact
             </Link>
             <Link
               href="/cart"
-              className="font-semibold text-primary hover:text-primaryHover transition-colors"
+              className="font-semibold transition-colors"
               onClick={() => setIsOpen(false)}
             >
               Cart

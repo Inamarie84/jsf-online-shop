@@ -8,7 +8,7 @@ export const Footer = () => {
     <footer className="bg-white/70 shadow-inner mt-8">
       <div className="container mx-auto px-4 py-6 flex flex-col items-center md:flex-row md:justify-between md:items-start gap-6">
         {/* Contact info */}
-        <div className="flex flex-col space-y-1 text-secondary text-sm text-center md:text-left">
+        <div className="flex flex-col space-y-1 text-sm text-center md:text-left">
           <span>
             Email:{" "}
             <a href="mailto:info@marketa.com" className="hover:underline">
@@ -24,39 +24,27 @@ export const Footer = () => {
         </div>
 
         {/* Navigation links */}
-        <nav className="flex flex-col md:flex-row md:space-x-6 space-y-1 md:space-y-0 text-primary text-sm font-semibold text-center md:text-left">
-          <Link
-            href="/"
-            className="hover:text-primary-hover-color transition-colors"
-          >
+        <nav className="flex flex-col md:flex-row md:space-x-6 space-y-1 md:space-y-0 text-sm font-semibold text-center md:text-left">
+          <Link href="/" className="transition-colors">
             Home
           </Link>
-          <Link
-            href="/cart"
-            className="hover:text-primary-hover-color transition-colors"
-          >
+          <Link href="/cart" className="transition-colors">
             Cart
           </Link>
-          <Link
-            href="/contact"
-            className="hover:text-primary-hover-color transition-colors"
-          >
+          <Link href="/contact" className="transition-colors">
             Contact
           </Link>
         </nav>
 
         {/* Social media */}
-        <div className="flex space-x-4 text-secondary justify-center md:justify-start">
+        <div className="flex space-x-4 justify-center md:justify-start">
           <a
             href="https://facebook.com"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Facebook"
           >
-            <Facebook
-              className="hover:text-primary-hover-color transition-colors"
-              size={20}
-            />
+            <Facebook className="transition-colors" size={20} />
           </a>
           <a
             href="https://instagram.com"
@@ -64,10 +52,7 @@ export const Footer = () => {
             rel="noopener noreferrer"
             aria-label="Instagram"
           >
-            <Instagram
-              className="hover:text-primary-hover-color transition-colors"
-              size={20}
-            />
+            <Instagram className="transition-colors" size={20} />
           </a>
           <a
             href="https://twitter.com"
@@ -75,15 +60,12 @@ export const Footer = () => {
             rel="noopener noreferrer"
             aria-label="Twitter"
           >
-            <Twitter
-              className="hover:text-primary-hover-color transition-colors"
-              size={20}
-            />
+            <Twitter className="transition-colors" size={20} />
           </a>
         </div>
       </div>
 
-      <div className="text-center text-xs text-secondary py-2 border-t border-secondary/20">
+      <div className="text-center text-xs py-2 border-t border-secondary/20">
         &copy; {new Date().getFullYear()} Markéta. All rights reserved.
       </div>
     </footer>
