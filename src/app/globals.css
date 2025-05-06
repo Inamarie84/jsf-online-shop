@@ -1,29 +1,27 @@
 @import "tailwindcss";
 
-/* Import the fonts using @font-face */
+/* Import the fonts */
 @font-face {
   font-family: "Poppins";
-  src: url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
-  font-weight: 400 600;
+  src: url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+  font-weight: 100 900;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
   font-family: "Playfair Display";
-  src: url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap");
-  font-weight: 400 700;
+  src: url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@100;200;300;400;500;600;700;800&display=swap");
+  font-weight: 100 800;
   font-style: normal;
   font-display: swap;
 }
 
 /* Use Tailwind v4's @theme block */
 @theme {
-  /* Fonts */
   --font-sans: "Poppins", sans-serif;
   --font-serif: "Playfair Display", serif;
 
-  /* Colors */
   --color-background: #ffffff;
   --color-primary: #465b52;
   --color-primary-hover: #5a7063;
@@ -37,4 +35,24 @@ body {
   background-color: var(--color-background);
   color: var(--color-main-text);
   font-family: var(--font-sans);
+}
+
+.font-serif-secondary {
+  font-family: var(--font-serif);
+  color: var(--color-secondary);
+}
+
+.nav-link {
+  font-family: var(--font-sans);
+  color: var(--color-primary);
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: var(--color-primary-hover);
+}
+
+h1 {
+  font-family: var(--font-serif);
+  color: var(--color-secondary);
 }

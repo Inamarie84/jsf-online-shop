@@ -25,13 +25,16 @@ export const Footer = () => {
 
         {/* Navigation links */}
         <nav className="flex flex-col md:flex-row md:space-x-6 space-y-1 md:space-y-0 text-sm font-semibold text-center md:text-left">
-          <Link href="/" className="transition-colors">
+          <Link href="/" className="nav-link font-normal hover:underline">
             Home
           </Link>
-          <Link href="/cart" className="transition-colors">
+          <Link href="/cart" className="nav-link font-normal hover:underline">
             Cart
           </Link>
-          <Link href="/contact" className="transition-colors">
+          <Link
+            href="/contact"
+            className="nav-link font-normal hover:underline"
+          >
             Contact
           </Link>
         </nav>
