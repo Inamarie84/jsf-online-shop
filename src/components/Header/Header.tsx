@@ -1,9 +1,10 @@
-"use client"; // only if you're using Next.js App Router — remove if using Pages Router
+"use client";
 
 import Link from "next/link";
 import { useState } from "react";
-import { Menu, X } from "lucide-react"; // or use heroicons if you prefer
+import { Menu, X } from "lucide-react";
 import Image from "next/image";
+import CartIcon from "@/components/CartIcon/CartIcon";
 
 export const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -13,13 +14,13 @@ export const Header = () => {
   return (
     <header className="bg-white/70 shadow-md">
       <div className="container mx-auto flex items-center justify-between p-4">
-        {/* Logo + title block */}
+        {/* Logo + title */}
         <Link href="/" className="flex items-center space-x-2">
           <Image
             src="/images/logo.png"
             alt="Markéta logo"
-            width={80}
-            height={80}
+            width={120}
+            height={120}
           />
           <div className="flex flex-col md:flex-row md:items-baseline md:space-x-2">
             <span
@@ -36,26 +37,32 @@ export const Header = () => {
 
         {/* Desktop nav */}
         <nav className="hidden md:flex space-x-6 items-center">
-          <Link href="/" className="nav-link font-semibold">
+          <Link
+            href="/"
+            className="nav-link font-semibold inline-flex items-center"
+          >
             Home
           </Link>
-
-          <Link href="/contact" className="nav-link font-semibold">
+          <Link
+            href="/contact"
+            className="nav-link font-semibold inline-flex items-center"
+          >
             Contact
           </Link>
-          <Link href="/cart" className="nav-link font-semibold">
-            Cart
-          </Link>
+          <CartIcon />
         </nav>
 
-        {/* Mobile menu button */}
-        <button
-          className="md:hidden text-gray-700"
-          onClick={toggleMenu}
-          aria-label="Toggle menu"
-        >
-          {isOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
+        {/* Mobile cart + hamburger */}
+        <div className="flex items-center space-x-4 md:hidden">
+          <CartIcon />
+          <button
+            className="nav-link"
+            onClick={toggleMenu}
+            aria-label="Toggle menu"
+          >
+            {isOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile nav */}
@@ -64,26 +71,19 @@ export const Header = () => {
           <div className="flex flex-col items-center space-y-4 py-4">
             <Link
               href="/"
-              className="nav-link font-semibold "
+              className="nav-link font-semibold inline-flex items-center"
               onClick={() => setIsOpen(false)}
             >
               Home
             </Link>
-
             <Link
               href="/contact"
-              className="nav-link font-semibold"
+              className="nav-link font-semibold inline-flex items-center"
               onClick={() => setIsOpen(false)}
             >
               Contact
             </Link>
-            <Link
-              href="/cart"
-              className="nav-link font-semibold"
-              onClick={() => setIsOpen(false)}
-            >
-              Cart
-            </Link>
+            <CartIcon />
           </div>
         </nav>
       )}

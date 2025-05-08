@@ -14,3 +14,7 @@ export type TOnlineShopResponse = {
   data: TProduct[];
   meta: TPaginationInfo;
 };
+
+export type TSingleProductResponse = {
+  data: TProduct;
+};

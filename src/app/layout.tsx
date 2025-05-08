@@ -1,5 +1,6 @@
 import { Header } from "@/components/Header/Header";
 import { Footer } from "@/components/Footer/Footer";
+import { Toaster } from "react-hot-toast";
 import type { Metadata } from "next";
 
 import "./globals.css";
@@ -21,7 +22,10 @@ export default function RootLayout({
       </head>
       <body className="antialiased min-h-screen flex flex-col">
         <Header />
-        <main className="flex-grow">{children}</main>
+        <main className="flex-grow">
+          <Toaster position="top-right" />
+          {children}
+        </main>
         <Footer />
       </body>
     </html>

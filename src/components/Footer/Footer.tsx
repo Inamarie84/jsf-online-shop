@@ -1,46 +1,49 @@
-"use client"; // if using App Router — remove if using Pages Router
+"use client";
 
 import Link from "next/link";
-import { Facebook, Instagram, Twitter } from "lucide-react"; // social icons
+import { Facebook, Instagram, Twitter } from "lucide-react";
 
 export const Footer = () => {
   return (
     <footer className="bg-white/70 shadow-inner mt-8">
       <div className="container mx-auto px-4 py-6 flex flex-col items-center md:flex-row md:justify-between md:items-start gap-6">
         {/* Contact info */}
-        <div className="flex flex-col space-y-1 text-sm text-center md:text-left">
+        <div className="flex flex-col space-y-1 text-sm text-center md:text-left text-[var(--color-secondary)]">
           <span>
             Email:{" "}
-            <a href="mailto:info@marketa.com" className="hover:underline">
+            <a
+              href="mailto:info@marketa.com"
+              className="hover:underline"
+              style={{ color: "var(--color-secondary)" }}
+            >
               info@marketa.com
             </a>
           </span>
           <span>
             Phone:{" "}
-            <a href="tel:+1234567890" className="hover:underline">
+            <a
+              href="tel:+1234567890"
+              className="hover:underline"
+              style={{ color: "var(--color-secondary)" }}
+            >
               +1 234 567 890
             </a>
           </span>
         </div>
 
         {/* Navigation links */}
-        <nav className="flex flex-col md:flex-row md:space-x-6 space-y-1 md:space-y-0 text-sm font-semibold text-center md:text-left">
-          <Link href="/" className="nav-link font-normal hover:underline">
+        <nav className="flex flex-col md:flex-row md:space-x-6 space-y-1 md:space-y-0 text-sm font-semibold text-center">
+          <Link href="/" className="nav-link font-normal">
             Home
           </Link>
-          <Link href="/cart" className="nav-link font-normal hover:underline">
-            Cart
-          </Link>
-          <Link
-            href="/contact"
-            className="nav-link font-normal hover:underline"
-          >
+
+          <Link href="/contact" className="nav-link font-normal">
             Contact
           </Link>
         </nav>
 
         {/* Social media */}
-        <div className="flex space-x-4 justify-center md:justify-start">
+        <div className="flex space-x-4 justify-center md:justify-start text-[var(--color-secondary)]">
           <a
             href="https://facebook.com"
             target="_blank"
@@ -68,7 +71,10 @@ export const Footer = () => {
         </div>
       </div>
 
-      <div className="text-center text-xs py-2 border-t border-secondary/20">
+      <div
+        className="text-center text-secondary text-xs py-2 border-t border-secondary/20"
+        // style={{ color: "var(--color-secondary)" }}
+      >
         &copy; {new Date().getFullYear()} Markéta. All rights reserved.
       </div>
     </footer>
