@@ -92,7 +92,7 @@ export default function ProductPage() {
         </div>
       )}
 
-      <h1 className="text-2xl font-bold mt-4">{title}</h1>
+      <h2 className="text-2xl font-bold mt-4">{title}</h2>
       <p className="text-yellow-500 text-sm">⭐ {rating}</p>
       <p className="text-gray-600 mt-2">{description}</p>
 
@@ -102,7 +102,7 @@ export default function ProductPage() {
 
       <button
         onClick={handleAddToCart}
-        className="mt-6 px-4 py-2 bg-black text-white rounded hover:bg-gray-800 cursor-pointer"
+        className="mt-4 bg-black text-white rounded-lg py-2 px-4 text-sm text-center hover:bg-opacity-80"
       >
         Add to Cart
       </button>

@@ -15,7 +15,11 @@ export default function ProductPrice({
       {hasDiscount && (
         <span className="line-through text-gray-500">${price}</span>
       )}
-      <span className="text-xl font-semibold text-green-600">
+      <span
+        className={`text-xl font-semibold ${
+          hasDiscount ? "text-red-600" : "text-[var(--color-main-text)]"
+        }`}
+      >
         ${discountedPrice}
       </span>
       {hasDiscount && (
