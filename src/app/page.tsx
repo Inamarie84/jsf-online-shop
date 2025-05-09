@@ -1,8 +1,8 @@
 "use client";
 
 import { fetchProducts } from "@/lib/api/fetchProducts"; // Adjust if needed
-import { ProductCardGrid } from "@/components/ProductCard/ProductCardGrid";
-import { ProductFilterBar } from "@/components/ProductCard/ProductFilterBar";
+import { ProductCardGrid } from "@/components/Product/ProductCardGrid";
+import { ProductFilterBar } from "@/components/Product/ProductFilterBar";
 import { TProduct } from "@/lib/types/products";
 import { useState, useEffect } from "react";
 

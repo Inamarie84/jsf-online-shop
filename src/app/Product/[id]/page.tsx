@@ -7,12 +7,18 @@ import toast from "react-hot-toast";
 import { TProduct } from "@/lib/types/products";
 import { fetchProductById } from "@/lib/api/fetchProductById";
 import Image from "next/image";
+import dynamic from "next/dynamic"; // Import dynamic for client-side rendering
 
-import SkeletonProduct from "@/components/SkeletonProduct";
-import ProductPrice from "@/components/ProductPrice";
-import ProductTags from "@/components/ProductTags";
-import ProductReviews from "@/components/ProductReviews";
+import SkeletonProduct from "@/components/Product/SkeletonProduct";
+import ProductPrice from "@/components/Product/ProductPrice";
+import ProductTags from "@/components/Product/ProductTags";
+import ProductReviews from "@/components/Product/ProductReviews";
 import { FALLBACK_IMAGE_URL } from "@/common/common";
+
+// Dynamically import useRouter to ensure client-side rendering
+const BackButton = dynamic(() => import("@/components/Product/BackButton"), {
+  ssr: false,
+});
 
 export default function ProductPage() {
   const { id } = useParams();
@@ -60,6 +66,9 @@ export default function ProductPage() {
 
   return (
     <div className="max-w-3xl mx-auto p-4">
+      {/* Back Button Component */}
+      <BackButton />
+
       {image?.url ? (
         <div className="relative w-full h-64">
           <Image

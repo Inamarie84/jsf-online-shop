@@ -1,36 +1,54 @@
 import { create } from "zustand";
 import { TProduct } from "@/lib/types/products";
 
-type CartItem = TProduct & { quantity: number };
+export type CartItem = {
+  product: TProduct;
+  quantity: number;
+};
 
 type CartState = {
-  items: CartItem[];
-  addToCart: (product: TProduct) => void;
-  removeFromCart: (id: string) => void; // ✅ string, not number
+  cartItems: CartItem[];
+  addToCart: (product: TProduct, quantity?: number) => void;
+  removeFromCart: (productId: string) => void;
+  updateQuantity: (productId: string, quantity: number) => void;
   clearCart: () => void;
 };
 
-export const useCartStore = create<CartState>((set) => ({
-  items: [],
-  addToCart: (product) =>
+export const useCartStore = create<CartState>()((set) => ({
+  cartItems: [],
+
+  addToCart: (product, quantity = 1) =>
     set((state) => {
-      const existing = state.items.find((item) => item.id === product.id);
+      const existing = state.cartItems.find(
+        (item) => item.product.id === product.id,
+      );
       if (existing) {
         return {
-          items: state.items.map((item) =>
-            item.id === product.id
-              ? { ...item, quantity: item.quantity + 1 }
+          cartItems: state.cartItems.map((item) =>
+            item.product.id === product.id
+              ? { ...item, quantity: item.quantity + quantity }
               : item,
           ),
         };
       }
       return {
-        items: [...state.items, { ...product, quantity: 1 }],
+        cartItems: [...state.cartItems, { product, quantity }],
       };
     }),
-  removeFromCart: (id) =>
+
+  removeFromCart: (productId) =>
     set((state) => ({
-      items: state.items.filter((item) => item.id !== id),
+      cartItems: state.cartItems.filter(
+        (item) => item.product.id !== productId,
+      ),
     })),
-  clearCart: () => set({ items: [] }),
+
+  updateQuantity: (productId, quantity) =>
+    set((state) => ({
+      cartItems: state.cartItems.map((item) =>
+        item.product.id === productId ? { ...item, quantity } : item,
+      ),
+    })),
+
+  clearCart: () => set({ cartItems: [] }),
 }));
