@@ -67,7 +67,7 @@ export function ProductCard({ product }: ProductCardProps) {
         {/* View Item Button as a Link */}
         <Link
           href={`/product/${id}`}
-          className="mt-4 rounded-lg py-2 px-4 text-sm text-center hover:bg-opacity-80"
+          className="mt-4 bg-black text-white rounded-lg py-2 px-4 text-sm text-center hover:bg-opacity-80"
         >
           View Item
         </Link>
