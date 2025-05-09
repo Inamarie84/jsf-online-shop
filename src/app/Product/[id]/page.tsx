@@ -8,6 +8,7 @@ import { TProduct } from "@/lib/types/products";
 import { fetchProductById } from "@/lib/api/fetchProductById";
 import Image from "next/image";
 import dynamic from "next/dynamic"; // Import dynamic for client-side rendering
+import Link from "next/link"; // Import Link component from Next.js
 
 import SkeletonProduct from "@/components/Product/SkeletonProduct";
 import ProductPrice from "@/components/Product/ProductPrice";
@@ -25,6 +26,7 @@ export default function ProductPage() {
   const [product, setProduct] = useState<TProduct | null>(null);
   const [loading, setLoading] = useState(true);
   const { addToCart } = useCartStore();
+  const [showGoToCart, setShowGoToCart] = useState(false); // Track if an item is added
 
   useEffect(() => {
     async function loadProduct() {
@@ -47,7 +49,13 @@ export default function ProductPage() {
     if (product) {
       addToCart(product);
       toast.success(`${product.title} added to cart`);
+      setShowGoToCart(true); // Show the "Go to Cart" button
     }
+  };
+
+  const handleGoToCart = () => {
+    // Optionally handle any additional logic here before redirecting to the cart
+    setShowGoToCart(false); // Hide the button when navigating to the cart
   };
 
   if (loading) return <SkeletonProduct />;
@@ -94,10 +102,22 @@ export default function ProductPage() {
 
       <button
         onClick={handleAddToCart}
-        className="mt-6 px-4 py-2 bg-black text-white rounded hover:bg-gray-800"
+        className="mt-6 px-4 py-2 bg-black text-white rounded hover:bg-gray-800 cursor-pointer"
       >
         Add to Cart
       </button>
+
+      {/* Floating "Go to Cart" button */}
+      {showGoToCart && (
+        <Link href="/cart">
+          <button
+            onClick={handleGoToCart}
+            className="fixed bottom-6 right-6 bg-black text-white py-3 px-6 rounded-full shadow-lg"
+          >
+            Go to Cart
+          </button>
+        </Link>
+      )}
     </div>
   );
 }

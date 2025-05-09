@@ -4,6 +4,7 @@ import { useCartStore } from "@/store/cartStore";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import ProductPrice from "@/components/Product/ProductPrice";
+import Link from "next/link"; // Import Link component from Next.js
 
 export default function CartPage() {
   const cartItems = useCartStore((state) => state.cartItems);
@@ -115,6 +116,16 @@ export default function CartPage() {
           </div>
         </div>
       )}
+
+      {/* Back to shopping button */}
+      <div className="mt-6">
+        <Link
+          href="/"
+          className="px-6 py-2 bg-gray-300 text-black rounded hover:bg-gray-400"
+        >
+          Back to Shopping
+        </Link>
+      </div>
     </div>
   );
 }
