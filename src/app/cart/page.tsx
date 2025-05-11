@@ -36,7 +36,7 @@ export default function CartPage() {
 
   const handleCheckout = () => {
     clearCart();
-    router.push("/checkout-success");
+    router.push("/checkOutSuccess");
     toast.success("Checkout successful!");
   };
 

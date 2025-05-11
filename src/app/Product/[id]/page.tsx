@@ -102,7 +102,7 @@ export default function ProductPage() {
 
       <button
         onClick={handleAddToCart}
-        className="mt-4 bg-black text-white rounded-lg py-2 px-4 text-sm text-center hover:bg-opacity-80"
+        className="mt-4 bg-black text-white rounded-lg py-2 px-4 text-sm text-center hover:bg-opacity-80 cursor-pointer"
       >
         Add to Cart
       </button>
@@ -112,7 +112,7 @@ export default function ProductPage() {
         <Link href="/cart">
           <button
             onClick={handleGoToCart}
-            className="fixed bottom-6 right-6 bg-black text-white py-3 px-6 rounded-full shadow-lg"
+            className="fixed bottom-6 right-6 bg-black text-white py-3 px-6 rounded-full shadow-lg cursor-pointer"
           >
             Go to Cart
           </button>
