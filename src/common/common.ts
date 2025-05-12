@@ -1,8 +1,3 @@
-// 1. create component that fetches produts data and displays it
-// 1.1. Create compnent
-// 1.2. Fetch the API data from the server
-// 1.3. Display the data in a list
-
 // src/common/common.ts
 
 // -----------------------------
@@ -27,18 +22,14 @@ export const BUTTON_LABELS = {
 export const VALIDATION_MESSAGES = {
   REQUIRED: "This field is required.",
   EMAIL_INVALID: "Please enter a valid email address.",
-  PASSWORD_SHORT: "Password must be at least 6 characters.",
 };
-
-// -----------------------------
-// Default / Fallback Values
-// -----------------------------
-export const FALLBACK_IMAGE_URL = "/images/fallback-product.png"; // You can add this image later
-export const DEFAULT_PRODUCT_DESCRIPTION = "No description available.";
 
 // -----------------------------
 // Toast Notification Settings
 // -----------------------------
+
+export type ToastType = "success" | "error" | "loading";
+
 export const TOAST_SETTINGS = {
   duration: 3000,
   position: "top-center" as "top-center" | "bottom-right",

@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import toast from "react-hot-toast";
+import { showToast } from "@/lib/utils/showToast"; // Import the showToast helper
+import { EMAIL_REGEX, VALIDATION_MESSAGES } from "@/common/common"; // Adjust path if needed
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -13,33 +14,61 @@ export default function ContactPage() {
 
   const [errors, setErrors] = useState<Partial<typeof formData>>({});
 
-  const validate = () => {
+  const validateField = (name: string, value: string) => {
+    switch (name) {
+      case "fullName":
+      case "subject":
+      case "body":
+        if (value.trim().length < 3) {
+          return `${name[0].toUpperCase() + name.slice(1)} must be at least 3 characters.`;
+        }
+        break;
+      case "email":
+        if (!EMAIL_REGEX.test(value)) {
+          return VALIDATION_MESSAGES.EMAIL_INVALID;
+        }
+        break;
+      default:
+        return "";
+    }
+    return "";
+  };
+
+  const validateForm = () => {
     const newErrors: Partial<typeof formData> = {};
 
-    if (formData.fullName.trim().length < 3)
-      newErrors.fullName = "Full name must be at least 3 characters.";
-    if (formData.subject.trim().length < 3)
-      newErrors.subject = "Subject must be at least 3 characters.";
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email))
-      newErrors.email = "Email must be valid.";
-    if (formData.body.trim().length < 3)
-      newErrors.body = "Message must be at least 3 characters.";
+    Object.entries(formData).forEach(([key, value]) => {
+      const error = validateField(key, value);
+      if (error) newErrors[key as keyof typeof formData] = error;
+    });
 
     return newErrors;
   };
 
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
+    const { name, value } = e.target;
+
+    setFormData((prev) => ({ ...prev, [name]: value }));
+
+    const error = validateField(name, value);
+    setErrors((prev) => ({ ...prev, [name]: error }));
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const newErrors: Partial<typeof formData> = validate();
+
+    const newErrors = validateForm();
 
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
-      toast.error("Please fix the validation errors before submitting.");
+      showToast("error", "Please fix the validation errors before submitting.");
       return;
     }
 
     console.log("Form submitted:", formData);
-    toast.success("Message sent successfully!");
+    showToast("success", "Message sent successfully!");
 
     setFormData({
       fullName: "",
@@ -48,13 +77,6 @@ export default function ContactPage() {
       body: "",
     });
     setErrors({});
-  };
-
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-  ) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   return (
@@ -82,6 +104,7 @@ export default function ContactPage() {
             )}
           </div>
         ))}
+
         <div>
           <label className="block font-medium">Message</label>
           <textarea
@@ -93,6 +116,7 @@ export default function ContactPage() {
           />
           {errors.body && <p className="text-red-500 text-sm">{errors.body}</p>}
         </div>
+
         <button type="submit" className="main-btn w-full">
           Send Message
         </button>

@@ -3,7 +3,7 @@
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useCartStore } from "@/store/cartStore";
-import toast from "react-hot-toast";
+import { showToast } from "@/lib/utils/showToast"; // Import showToast function
 import { TProduct } from "@/lib/types/products";
 import { fetchProductById } from "@/lib/api/fetchProductById";
 import Image from "next/image";
@@ -14,7 +14,6 @@ import SkeletonProduct from "@/components/Product/SkeletonProduct";
 import ProductPrice from "@/components/Product/ProductPrice";
 import ProductTags from "@/components/Product/ProductTags";
 import ProductReviews from "@/components/Product/ProductReviews";
-import { FALLBACK_IMAGE_URL } from "@/common/common";
 
 // Dynamically import useRouter to ensure client-side rendering
 const BackButton = dynamic(() => import("@/components/Product/BackButton"), {
@@ -35,7 +34,7 @@ export default function ProductPage() {
         const res = await fetchProductById(id);
         setProduct(res.data);
       } catch (error: any) {
-        toast.error("Failed to load product. Please try again later.");
+        showToast("error", "Failed to load product. Please try again later."); // Use showToast for error
         console.error("Error loading product:", error);
       } finally {
         setLoading(false);
@@ -48,7 +47,7 @@ export default function ProductPage() {
   const handleAddToCart = () => {
     if (product) {
       addToCart(product);
-      toast.success(`${product.title} added to cart`);
+      showToast("success", `${product.title} added to cart`); // Use showToast for success
       setShowGoToCart(true); // Show the "Go to Cart" button
     }
   };
@@ -80,8 +79,8 @@ export default function ProductPage() {
       {image?.url ? (
         <div className="relative w-full h-64">
           <Image
-            src={image?.url || FALLBACK_IMAGE_URL}
-            alt={image?.alt || title}
+            src={image.url}
+            alt={image.alt || title}
             fill
             className="object-cover rounded-lg"
           />

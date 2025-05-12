@@ -5,6 +5,7 @@ import { ProductCardGrid } from "@/components/Product/ProductCardGrid";
 import { ProductFilterBar } from "@/components/Product/ProductFilterBar";
 import { TProduct } from "@/lib/types/products";
 import { useState, useEffect } from "react";
+import { showToast } from "@/lib/utils/showToast"; // Import showToast function
 
 export default function HomePage() {
   const [loading, setLoading] = useState(true);
@@ -20,6 +21,7 @@ export default function HomePage() {
         setProducts(data.data); // Assuming the data is inside `data.data`
       } catch (error) {
         console.error("Error loading products:", error);
+        showToast("error", "Failed to load products. Please try again later."); // Use showToast for error
       } finally {
         setLoading(false);
       }

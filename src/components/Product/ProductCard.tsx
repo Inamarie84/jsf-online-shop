@@ -3,7 +3,6 @@
 import { TProduct } from "@/lib/types/products";
 import Image from "next/image";
 import Link from "next/link";
-import { FALLBACK_IMAGE_URL } from "@/common/common";
 
 import ProductPrice from "@/components/Product/ProductPrice";
 import ProductTags from "@/components/Product/ProductTags";
@@ -33,12 +32,18 @@ export function ProductCard({ product }: ProductCardProps) {
   return (
     <div className="relative border rounded-lg shadow hover:shadow-lg overflow-hidden flex flex-col h-full">
       <Link href={`/product/${id}`} className="relative w-full h-48 block">
-        <Image
-          src={image?.url || FALLBACK_IMAGE_URL}
-          alt={image?.alt || title}
-          fill
-          className="object-cover"
-        />
+        {image?.url ? (
+          <Image
+            src={image.url}
+            alt={image.alt || title}
+            fill
+            className="object-cover"
+          />
+        ) : (
+          <div className="w-full h-full bg-gray-200 flex items-center justify-center text-gray-600 text-sm">
+            No image available
+          </div>
+        )}
         {hasDiscount && (
           <div className="absolute top-2 left-2 bg-discount text-white text-xs font-bold px-2 py-1 rounded">
             -{discountPercentage}%
