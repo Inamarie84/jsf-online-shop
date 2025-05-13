@@ -30,7 +30,7 @@ export function ProductCard({ product }: ProductCardProps) {
     : 0;
 
   return (
-    <div className="relative border rounded-lg shadow hover:shadow-lg overflow-hidden flex flex-col h-full">
+    <div className="relative  rounded-lg shadow hover:shadow-lg overflow-hidden flex flex-col h-full">
       <Link href={`/product/${id}`} className="relative w-full h-48 block">
         {image?.url ? (
           <Image
@@ -72,7 +72,8 @@ export function ProductCard({ product }: ProductCardProps) {
         {/* View Item Button as a Link */}
         <Link
           href={`/product/${id}`}
-          className="mt-4 bg-black text-white rounded-lg py-2 px-4 text-sm text-center hover:bg-opacity-80"
+          className="main-button mt-4 text-sm text-center
+        "
         >
           View Item
         </Link>

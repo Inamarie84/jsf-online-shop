@@ -50,7 +50,9 @@ export default function HomePage() {
 
   return (
     <main className="container mx-auto px-4 py-8">
-      <h1 className=" md:text-4xl text-center mb-8">Featured Products</h1>
+      <h1 className="text-2xl sm:text-3xl md:text-4xl text-center mb-8">
+        Featured Products
+      </h1>
 
       {/* Product filter bar with search and sort */}
       <ProductFilterBar

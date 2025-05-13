@@ -81,7 +81,9 @@ export default function ContactPage() {
 
   return (
     <section className="max-w-xl mx-auto p-4 mt-8">
-      <h1 className="text-3xl text-center mb-8">Contact Us</h1>
+      <h1 className="text-2xl sm:text-3xl md:text-4xl text-center mb-8">
+        Contact Us
+      </h1>
       <form onSubmit={handleSubmit} className="space-y-4">
         {[
           { name: "fullName", type: "text", label: "Full Name" },

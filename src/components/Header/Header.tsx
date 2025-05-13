@@ -22,7 +22,7 @@ export const Header = () => {
             width={120}
             height={120}
           />
-          <div className="flex flex-col md:flex-row md:items-baseline md:space-x-2">
+          <div className="hidden md:flex flex-col md:flex-row md:items-baseline md:space-x-2">
             <span
               className="font-serif-secondary text-2xl md:text-4xl lg:text-5xl font-extrabold leading-none align-middle"
               style={{ textShadow: "0 1px 1px rgba(0,0,0,0.1)" }}
@@ -83,7 +83,6 @@ export const Header = () => {
             >
               Contact
             </Link>
-            <CartIcon />
           </div>
         </nav>
       )}
