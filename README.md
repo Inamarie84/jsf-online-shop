@@ -1,36 +1,146 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# E-Commerce Store
 
-## Getting Started
+## Overview
 
-First, run the development server:
+This project is a fully functional e-commerce store built with **Next.js**, **React**, **TypeScript**, **Zustand**, and **Tailwind CSS**. It provides an intuitive user experience with product browsing, cart management, and a successful checkout process. The store utilizes a custom-built API to fetch product data and integrate a responsive UI for seamless interaction across devices.
+
+## Key Features
+
+- **Homepage**: Displays a list of all products with a search bar to filter products by name.
+- **Product Page**: Shows detailed information about a selected product, including title, description, price, and reviews.
+- **Cart Page**: Displays a list of products in the user's cart and calculates the total cost.
+- **Checkout Success Page**: A confirmation page that shows when the order is successfully placed and clears the cart.
+- **Contact Page**: A contact form with validation to collect user inquiries.
+- **Responsive Design**: Optimized for both desktop and mobile devices.
+
+## Technologies Used
+
+- **Next.js**: A React framework for building server-rendered and statically generated web applications.
+- **React**: JavaScript library for building user interfaces.
+- **TypeScript**: Superset of JavaScript that adds static typing.
+- **Zustand**: A state management library used to manage global application state (e.g., cart state).
+- **Tailwind CSS**: A utility-first CSS framework used to build custom and responsive designs.
+
+## API
+
+This e-commerce store fetches product data from the **Noroff API**. You can retrieve individual products by appending their unique product ID to the API URL, like so:
+
+## Pages
+
+### 1. Homepage
+
+The homepage lists all available products and features a search bar that filters products by name. Each product is displayed as a card with a **View Product** button, leading to the individual product page.
+
+### 2. Product Page
+
+The individual product page displays:
+
+- Product title, description, and image.
+- Price and any available discounts.
+- User reviews (if available).
+- An **Add to Cart** button to add the product to the shopping cart.
+
+### 3. Cart Page
+
+The cart page displays the products added to the cart and calculates the total price. It includes a **Checkout** button that navigates to the checkout page.
+
+### 4. Checkout Success Page
+
+This page displays a success message when an order is successfully placed. It also provides a link to go back to the store and clears the cart.
+
+### 5. Contact Page
+
+The contact page features a form with the following fields:
+
+- Full Name (required, minimum 3 characters)
+- Subject (required, minimum 3 characters)
+- Email (required, valid email format)
+- Body (required, minimum 3 characters)
+
+### Layout
+
+All pages are wrapped in a `Layout` component, which includes a header (with a cart icon showing the number of items in the cart) and a footer.
+
+## Installation
+
+To run this project locally, follow these steps:
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/Inamarie84/jsf-online-shop.git
+
+   ```
+
+2. Navigate to the project directory:
+
+```bash
+cd jsf-online-shop
+
+```
+
+3. Install dependencies:
+
+```bash
+npm install
+
+```
+
+4. Run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+5. Open your browser and visit http://localhost:3000 to view the store.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Features Breakdown
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Home Page
 
-## Learn More
+- A list of all products fetched from the Noroff API.
+- A dynamic search bar that filters the product list as the user types.
+- Each product card links to the individual product page.
 
-To learn more about Next.js, take a look at the following resources:
+### Product Page
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Displays detailed product information (title, description, price, reviews).
+- An **Add to Cart** button allows users to add items to the cart.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Cart Page
 
-## Deploy on Vercel
+- Displays all items added to the cart with their details (name, quantity, price).
+- Calculates and displays the total cost of items in the cart.
+- A **Checkout** button leads to the checkout success page.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Checkout Success Page
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Displays a success message once the user completes the checkout process.
+- Provides a link to return to the homepage.
+
+### Contact Page
+
+- Includes a contact form with validations for Full Name, Subject, Email, and Body.
+- Submitting the form logs the form data to the console.
+
+## State Management
+
+The application uses **Zustand** to manage global state, including:
+
+- The list of products fetched from the API.
+- The user's cart, which holds the products added to the cart.
+
+## Deployment
+
+The project has been deployed to **Netlify**. You can access the live version of the store at the following URL:
+
+[Your Live Store](https://your-live-store.netlify.app)
+
+## Conclusion
+
+This project demonstrates the integration of several modern web technologies to build a responsive and interactive e-commerce store. It features robust state management with **Zustand**, dynamic data fetching using the **Noroff API**, and responsive design with **Tailwind CSS**.
+
+```
+
+```

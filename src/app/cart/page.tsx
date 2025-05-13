@@ -136,7 +136,7 @@ export default function CartPage() {
           href="/"
           className="px-6 py-2 bg-white text-main-text border rounded hover:bg-gray-100 transition duration-300 ease-in-out text-sm"
         >
-          Back to Shopping
+          Back to Store
         </Link>
       </div>
     </div>

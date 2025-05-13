@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { showToast } from "@/lib/utils/showToast"; // Import the showToast helper
-import { EMAIL_REGEX, VALIDATION_MESSAGES } from "@/common/common"; // Adjust path if needed
+import { showToast } from "@/lib/utils/showToast";
+import { EMAIL_REGEX, VALIDATION_MESSAGES } from "@/common/common";
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -17,10 +17,18 @@ export default function ContactPage() {
   const validateField = (name: string, value: string) => {
     switch (name) {
       case "fullName":
+        if (value.trim().length < 3) {
+          return "Full Name must be at least 3 characters.";
+        }
+        break;
       case "subject":
+        if (value.trim().length < 3) {
+          return "Subject must be at least 3 characters.";
+        }
+        break;
       case "body":
         if (value.trim().length < 3) {
-          return `${name[0].toUpperCase() + name.slice(1)} must be at least 3 characters.`;
+          return "Message must be at least 3 characters.";
         }
         break;
       case "email":
@@ -28,20 +36,18 @@ export default function ContactPage() {
           return VALIDATION_MESSAGES.EMAIL_INVALID;
         }
         break;
-      default:
-        return "";
     }
     return "";
   };
 
   const validateForm = () => {
     const newErrors: Partial<typeof formData> = {};
-
     Object.entries(formData).forEach(([key, value]) => {
       const error = validateField(key, value);
-      if (error) newErrors[key as keyof typeof formData] = error;
+      if (error) {
+        newErrors[key as keyof typeof formData] = error;
+      }
     });
-
     return newErrors;
   };
 
@@ -49,7 +55,6 @@ export default function ContactPage() {
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     const { name, value } = e.target;
-
     setFormData((prev) => ({ ...prev, [name]: value }));
 
     const error = validateField(name, value);
@@ -60,7 +65,6 @@ export default function ContactPage() {
     e.preventDefault();
 
     const newErrors = validateForm();
-
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
       showToast("error", "Please fix the validation errors before submitting.");
@@ -68,7 +72,7 @@ export default function ContactPage() {
     }
 
     console.log("Form submitted:", formData);
-    showToast("success", "Message sent successfully!");
+    showToast("success", "Thank you for your message!");
 
     setFormData({
       fullName: "",
@@ -91,8 +95,11 @@ export default function ContactPage() {
           { name: "email", type: "email", label: "Email" },
         ].map(({ name, type, label }) => (
           <div key={name}>
-            <label className="block font-medium">{label}</label>
+            <label htmlFor={name} className="block font-medium">
+              {label}
+            </label>
             <input
+              id={name}
               type={type}
               name={name}
               value={formData[name as keyof typeof formData]}
@@ -108,8 +115,11 @@ export default function ContactPage() {
         ))}
 
         <div>
-          <label className="block font-medium">Message</label>
+          <label htmlFor="body" className="block font-medium">
+            Message
+          </label>
           <textarea
+            id="body"
             name="body"
             value={formData.body}
             onChange={handleChange}
@@ -119,7 +129,10 @@ export default function ContactPage() {
           {errors.body && <p className="text-red-500 text-sm">{errors.body}</p>}
         </div>
 
-        <button type="submit" className="main-btn w-full">
+        <button
+          type="submit"
+          className="px-6 py-2 bg-white text-main-text border rounded hover:bg-gray-100 transition duration-300 ease-in-out text-sm  cursor-pointer"
+        >
           Send Message
         </button>
       </form>

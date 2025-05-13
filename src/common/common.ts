@@ -7,16 +7,6 @@ export const BASE_API_URL = "https://v2.api.noroff.dev";
 export const ONLINE_SHOP_API_URL = `${BASE_API_URL}/online-shop`;
 
 // -----------------------------
-// Button Labels
-// -----------------------------
-export const BUTTON_LABELS = {
-  ADD_TO_CART: "Add to Cart",
-  BUY_NOW: "Buy Now",
-  CHECKOUT: "Checkout",
-  CONTINUE_SHOPPING: "Continue Shopping",
-};
-
-// -----------------------------
 // Form Validation Messages
 // -----------------------------
 export const VALIDATION_MESSAGES = {

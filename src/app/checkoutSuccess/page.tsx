@@ -3,12 +3,20 @@
 import Link from "next/link";
 import { useEffect } from "react";
 import { useCartStore } from "@/store/cartStore";
+import confetti from "canvas-confetti";
 
 export default function CheckoutSuccessPage() {
   const clearCart = useCartStore((state) => state.clearCart);
 
   useEffect(() => {
     clearCart(); // Clear the cart when the component mounts
+
+    // Launch confetti when the component mounts
+    confetti({
+      particleCount: 150,
+      spread: 70,
+      origin: { x: 0.5, y: 0.6 }, // Add both x and y values
+    });
   }, [clearCart]);
 
   return (

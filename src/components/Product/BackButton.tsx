@@ -8,9 +8,9 @@ export default function BackButton() {
   return (
     <button
       onClick={handleBack}
-      className="mb-4 text-blue-500 hover:text-blue-700 cursor-pointer"
+      className="mb-6 text-blue-500 hover:text-blue-700 cursor-pointer"
     >
-      &larr; Back to Products
+      &larr; Back to Store
     </button>
   );
 }
