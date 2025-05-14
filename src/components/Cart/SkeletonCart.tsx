@@ -13,7 +13,7 @@ export default function SkeletonCart() {
           <div className="bg-gray-300 w-8 h-8 rounded mx-2" />
         </div>
       </div>
-      {/* Repeat the skeleton for each cart item */}
+
       <div className="flex items-center border-b py-4 mt-4">
         <div className="bg-gray-300 w-24 h-24 rounded" />
         <div className="ml-4 flex-grow">
@@ -27,7 +27,6 @@ export default function SkeletonCart() {
         </div>
       </div>
 
-      {/* Total and Checkout Skeleton */}
       <div className="mt-6 flex justify-between items-center">
         <div className="bg-gray-300 w-1/4 h-8 rounded" />
         <div className="bg-gray-300 w-32 h-8 rounded" />

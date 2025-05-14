@@ -14,7 +14,6 @@ export const Header = () => {
   return (
     <header className="bg-white/70 shadow-md">
       <div className="container mx-auto flex items-center justify-between p-4">
-        {/* Logo + title */}
         <Link href="/" className="flex items-center space-x-2">
           <Image
             src="/images/logo.png"
@@ -35,7 +34,6 @@ export const Header = () => {
           </div>
         </Link>
 
-        {/* Desktop nav */}
         <nav className="hidden md:flex space-x-6 items-center">
           <Link
             href="/"
@@ -52,7 +50,6 @@ export const Header = () => {
           <CartIcon />
         </nav>
 
-        {/* Mobile cart + hamburger */}
         <div className="flex items-center space-x-4 md:hidden">
           <CartIcon />
           <button
@@ -65,7 +62,6 @@ export const Header = () => {
         </div>
       </div>
 
-      {/* Mobile nav */}
       {isOpen && (
         <nav className="md:hidden bg-white shadow-md">
           <div className="flex flex-col items-center space-y-4 py-4">

@@ -5,7 +5,7 @@ import { ShoppingCart } from "lucide-react";
 import { useCartStore } from "@/store/cartStore";
 
 export default function CartIcon() {
-  const cartItems = useCartStore((state) => state.cartItems); // Use cartItems instead of items
+  const cartItems = useCartStore((state) => state.cartItems);
   const itemCount = cartItems.reduce((total, item) => total + item.quantity, 0);
 
   return (

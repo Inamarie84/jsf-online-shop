@@ -12,17 +12,8 @@ type ProductCardProps = {
 };
 
 export function ProductCard({ product }: ProductCardProps) {
-  const {
-    id,
-    title,
-    description,
-    price,
-    discountedPrice,
-    image,
-    rating,
-    tags,
-    reviews,
-  } = product;
+  const { id, title, price, discountedPrice, image, rating, tags, reviews } =
+    product;
 
   const hasDiscount = discountedPrice < price;
   const discountPercentage = hasDiscount
@@ -30,7 +21,7 @@ export function ProductCard({ product }: ProductCardProps) {
     : 0;
 
   return (
-    <div className="relative  rounded-lg shadow hover:shadow-lg overflow-hidden flex flex-col h-full">
+    <div className="relative  rounded-lg shadow hover:shadow-lg overflow-hidden flex flex-col h-full ">
       <Link href={`/product/${id}`} className="relative w-full h-48 block">
         {image?.url ? (
           <Image
@@ -56,12 +47,9 @@ export function ProductCard({ product }: ProductCardProps) {
           <h3 className="text-lg font-semibold">{title}</h3>
           <ProductPrice price={price} discountedPrice={discountedPrice} />
           <p className="text-yellow-500 text-sm">⭐ {rating}</p>
-          <p className="text-sm text-gray-600 mt-2 line-clamp-2">
-            {description}
-          </p>
+
           <ProductTags tags={tags} />
 
-          {/* Display number of reviews */}
           {reviews?.length > 0 && (
             <p className="text-xs text-gray-500 mt-2">
               {reviews.length} review{reviews.length > 1 ? "s" : ""}
@@ -69,7 +57,6 @@ export function ProductCard({ product }: ProductCardProps) {
           )}
         </div>
 
-        {/* View Item Button as a Link */}
         <Link
           href={`/product/${id}`}
           className="main-button mt-4 text-sm text-center

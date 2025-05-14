@@ -1,5 +1,3 @@
-//app/product/loading.tsx
-
 import SkeletonProduct from "@/components/Product/SkeletonProduct";
 
 export default function Loading() {

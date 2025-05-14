@@ -1,5 +1,3 @@
-// src/common/common.ts
-
 // -----------------------------
 // API URLs
 // -----------------------------
@@ -17,7 +15,6 @@ export const VALIDATION_MESSAGES = {
 // -----------------------------
 // Toast Notification Settings
 // -----------------------------
-
 export type ToastType = "success" | "error" | "loading";
 
 export const TOAST_SETTINGS = {
@@ -29,8 +26,3 @@ export const TOAST_SETTINGS = {
 // Regex Patterns
 // -----------------------------
 export const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-// -----------------------------
-// Other Reusable Constants
-// -----------------------------
-export const ITEMS_PER_PAGE = 12;

@@ -8,7 +8,6 @@ export default function ProductReviews({
     description: string;
   }[];
 }) {
-  // Default to an empty array if reviews is undefined or null
   const safeReviews = reviews || [];
 
   if (safeReviews.length === 0) return null;

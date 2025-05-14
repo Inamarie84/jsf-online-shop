@@ -1,4 +1,3 @@
-// src/components/ProductCard/ProductFilterBar.tsx
 "use client";
 
 import { ChangeEvent } from "react";

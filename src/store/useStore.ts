@@ -1,7 +1,6 @@
 import { create } from "zustand";
 import { TProduct } from "@/lib/types/products";
 
-// Define types for the global state
 type Store = {
   products: TProduct[];
   loading: boolean;
@@ -11,7 +10,6 @@ type Store = {
   setError: (error: string | null) => void;
 };
 
-// Create the Zustand store
 export const useStore = create<Store>((set) => ({
   products: [],
   loading: false,

@@ -132,10 +132,7 @@ export default function CartPage() {
       )}
 
       <div className="mt-6 flex justify-center">
-        <Link
-          href="/"
-          className="px-6 py-2 bg-white text-main-text border rounded hover:bg-gray-100 transition duration-300 ease-in-out text-sm"
-        >
+        <Link href="/" className="secondary-button ">
           Back to Store
         </Link>
       </div>

@@ -15,7 +15,7 @@ import ProductPrice from "@/components/Product/ProductPrice";
 import ProductTags from "@/components/Product/ProductTags";
 import ProductReviews from "@/components/Product/ProductReviews";
 
-const BackButton = dynamic(() => import("@/components/Product/BackButton"), {
+const BackButton = dynamic(() => import("@/components/Buttons/BackButton"), {
   ssr: false,
 });
 
@@ -34,7 +34,6 @@ export default function ProductPage() {
         setProduct(res.data);
       } catch (error) {
         showToast("error", "Failed to load product. Please try again later.");
-        console.error("Error loading product:", error);
       } finally {
         setLoading(false);
       }

@@ -2,12 +2,10 @@ import { render, screen, fireEvent } from "@testing-library/react";
 import CartPage from "./page";
 import { useCartStore } from "@/store/cartStore";
 
-// ✅ Mock the module
 jest.mock("@/store/cartStore", () => ({
   useCartStore: jest.fn(),
 }));
 
-// ✅ Cast to a mock function for reuse
 const mockedUseCartStore = useCartStore as unknown as jest.Mock;
 
 describe("CartPage", () => {

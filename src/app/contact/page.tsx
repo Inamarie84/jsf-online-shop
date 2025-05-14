@@ -131,7 +131,7 @@ export default function ContactPage() {
 
         <button
           type="submit"
-          className="px-6 py-2 bg-white text-main-text border rounded hover:bg-gray-100 transition duration-300 ease-in-out text-sm  cursor-pointer"
+          className="main-button mt-4 text-sm text-center  mx-auto block"
         >
           Send Message
         </button>

@@ -1,5 +1,4 @@
 export default function ProductTags({ tags }: { tags?: string[] }) {
-  // Default to an empty array if tags is undefined or null
   const safeTags = tags || [];
 
   if (safeTags.length === 0) return null;

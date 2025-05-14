@@ -1,11 +1,11 @@
 "use client";
 
-import { fetchProducts } from "@/lib/api/fetchProducts"; // Adjust if needed
+import { fetchProducts } from "@/lib/api/fetchProducts";
 import { ProductCardGrid } from "@/components/Product/ProductCardGrid";
 import { ProductFilterBar } from "@/components/Product/ProductFilterBar";
 import { TProduct } from "@/lib/types/products";
 import { useState, useEffect } from "react";
-import { showToast } from "@/lib/utils/showToast"; // Import showToast function
+import { showToast } from "@/lib/utils/showToast";
 
 export default function HomePage() {
   const [loading, setLoading] = useState(true);
@@ -18,10 +18,9 @@ export default function HomePage() {
       try {
         setLoading(true);
         const data = await fetchProducts();
-        setProducts(data.data); // Assuming the data is inside `data.data`
+        setProducts(data.data);
       } catch (error) {
-        console.error("Error loading products:", error);
-        showToast("error", "Failed to load products. Please try again later."); // Use showToast for error
+        showToast("error", "Failed to load products. Please try again later.");
       } finally {
         setLoading(false);
       }
@@ -30,7 +29,6 @@ export default function HomePage() {
     loadProducts();
   }, []);
 
-  // Filter and sort logic
   const filteredProducts = products
     .filter((product) =>
       product.title.toLowerCase().includes(searchQuery.toLowerCase()),
@@ -54,7 +52,6 @@ export default function HomePage() {
         Featured Products
       </h1>
 
-      {/* Product filter bar with search and sort */}
       <ProductFilterBar
         searchQuery={searchQuery}
         onSearchChange={setSearchQuery}
@@ -62,7 +59,6 @@ export default function HomePage() {
         onSortChange={setSortOption}
       />
 
-      {/* Display products */}
       <ProductCardGrid products={filteredProducts} loading={loading} />
     </main>
   );

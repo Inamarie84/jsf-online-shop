@@ -9,13 +9,12 @@ export default function CheckoutSuccessPage() {
   const clearCart = useCartStore((state) => state.clearCart);
 
   useEffect(() => {
-    clearCart(); // Clear the cart when the component mounts
+    clearCart();
 
-    // Launch confetti when the component mounts
     confetti({
       particleCount: 150,
       spread: 70,
-      origin: { x: 0.5, y: 0.6 }, // Add both x and y values
+      origin: { x: 0.5, y: 0.6 },
     });
   }, [clearCart]);
 
@@ -28,10 +27,7 @@ export default function CheckoutSuccessPage() {
         Your order was successful and your cart has been cleared. We appreciate
         your purchase!
       </p>
-      <Link
-        href="/"
-        className="px-6 py-2 bg-white text-main-text border rounded hover:bg-gray-100 transition duration-300 ease-in-out text-sm"
-      >
+      <Link href="/" className="secondary-button">
         Back to Store
       </Link>
     </section>

@@ -1,4 +1,3 @@
-// src/components/ProductCardGrid.tsx
 "use client";
 
 import { TProduct } from "@/lib/types/products";

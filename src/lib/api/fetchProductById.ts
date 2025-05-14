@@ -1,5 +1,3 @@
-// src/lib/api/fetchProductById.ts
-
 import { TSingleProductResponse } from "@/lib/types/api";
 import { ONLINE_SHOP_API_URL } from "@/common/common";
 import { fetcher } from "./fetcher";

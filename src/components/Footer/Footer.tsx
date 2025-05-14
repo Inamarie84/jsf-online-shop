@@ -7,7 +7,6 @@ export const Footer = () => {
   return (
     <footer className="bg-white/70 shadow-inner mt-8">
       <div className="container mx-auto px-4 py-6 flex flex-col items-center md:flex-row md:justify-between md:items-start gap-6">
-        {/* Contact info */}
         <div className="flex flex-col space-y-1 text-sm text-center md:text-left text-[var(--color-secondary)]">
           <span>
             Email:{" "}
@@ -31,7 +30,6 @@ export const Footer = () => {
           </span>
         </div>
 
-        {/* Navigation links */}
         <nav className="flex flex-col md:flex-row md:space-x-6 space-y-1 md:space-y-0 text-sm font-semibold text-center">
           <Link href="/" className="nav-link font-normal">
             Home
@@ -42,7 +40,6 @@ export const Footer = () => {
           </Link>
         </nav>
 
-        {/* Social media */}
         <div className="flex space-x-4 justify-center md:justify-start text-[var(--color-secondary)]">
           <a
             href="https://facebook.com"
@@ -71,10 +68,7 @@ export const Footer = () => {
         </div>
       </div>
 
-      <div
-        className="text-center text-secondary text-xs py-2 border-t border-secondary/20"
-        // style={{ color: "var(--color-secondary)" }}
-      >
+      <div className="text-center text-secondary text-xs py-2 border-t border-secondary/20">
         &copy; {new Date().getFullYear()} Markéta. All rights reserved.
       </div>
     </footer>
