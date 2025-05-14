@@ -50,7 +50,10 @@ export const Header = () => {
           <CartIcon />
         </nav>
 
-        <div className="flex items-center space-x-4 md:hidden">
+        <div
+          className="flex items-center space-x-4 md:hidden"
+          aria-label="View cart"
+        >
           <CartIcon />
           <button
             className="nav-link"

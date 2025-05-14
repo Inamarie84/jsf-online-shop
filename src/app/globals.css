@@ -3,14 +3,14 @@
 @theme {
   --font-sans: "Poppins", sans-serif;
   --font-serif: "Playfair Display", serif;
-  --color-background: #ffffff;
+  --bg-discount: #c0392b;
   --color-primary: #465b52;
   --color-secondary: #b2a59b;
   --color-main-text: #2a2a2a;
 }
 
 body {
-  background-color: var(--color-background);
+  background-color: rgba(255, 255, 255, 0.7);
   color: var(--color-main-text);
   font-family: var(--font-sans);
 }

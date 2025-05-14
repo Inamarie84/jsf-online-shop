@@ -36,7 +36,10 @@ export function ProductCard({ product }: ProductCardProps) {
           </div>
         )}
         {hasDiscount && (
-          <div className="absolute top-2 left-2 bg-discount text-white text-xs font-bold px-2 py-1 rounded">
+          <div
+            className="absolute top-2 left-2 text-white text-xs font-bold px-2 py-1 rounded"
+            style={{ backgroundColor: "var(--bg-discount)" }}
+          >
             -{discountPercentage}%
           </div>
         )}
