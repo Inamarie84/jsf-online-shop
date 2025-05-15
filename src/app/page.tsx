@@ -19,7 +19,7 @@ export default function HomePage() {
         setLoading(true);
         const data = await fetchProducts();
         setProducts(data.data);
-      } catch (error) {
+      } catch {
         showToast("error", "Failed to load products. Please try again later.");
       } finally {
         setLoading(false);

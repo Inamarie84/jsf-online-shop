@@ -32,7 +32,7 @@ export default function ProductPage() {
         if (typeof id !== "string") return;
         const res = await fetchProductById(id);
         setProduct(res.data);
-      } catch (error) {
+      } catch {
         showToast("error", "Failed to load product. Please try again later.");
       } finally {
         setLoading(false);
