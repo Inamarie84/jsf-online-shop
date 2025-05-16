@@ -133,7 +133,7 @@ The application uses **Zustand** to manage global state, including:
 
 ## Deployment
 
-The project has been deployed to **Netlify**. You can access the live version of the store at the following URL:
+The project has been deployed to **Vercel**. You can access the live version of the store at the following URL:
 
 [Your Live Store](https://your-live-store.netlify.app)
 

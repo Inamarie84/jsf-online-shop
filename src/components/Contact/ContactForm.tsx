@@ -1,4 +1,3 @@
-// /components/contact/ContactForm.tsx
 "use client";
 
 import React from "react";
@@ -73,7 +72,6 @@ export function ContactForm() {
       return;
     }
 
-    console.log("Form submitted:", formData);
     showToast("success", "Thank you for your message!");
     resetForm();
     setSuccessMessage("Thank you for your message!");
