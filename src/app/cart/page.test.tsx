@@ -1,7 +1,6 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import CartPage from "./page";
 import { useCartStore } from "@/store/cartStore";
-import { showToast } from "@/lib/utils/showToast";
 
 // Mock useRouter from next/navigation
 const pushMock = jest.fn();
