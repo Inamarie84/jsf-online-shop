@@ -12,23 +12,23 @@ export const Header = () => {
   const toggleMenu = () => setIsOpen(!isOpen);
 
   return (
-    <header className="bg-white/70 shadow-md">
-      <div className="container mx-auto flex items-center justify-between p-4">
+    <header className="sticky top-0 z-50 bg-white/70 backdrop-blur-md shadow-md">
+      <div className="container mx-auto flex items-center justify-between py-2 px-4">
         <Link href="/" className="flex items-center space-x-2">
           <Image
             src="/images/logo.png"
             alt="Markéta logo"
-            width={120}
-            height={120}
+            width={80}
+            height={80}
           />
           <div className="hidden md:flex flex-col md:flex-row md:items-baseline md:space-x-2">
             <span
-              className="font-serif-secondary text-2xl md:text-4xl lg:text-5xl font-extrabold leading-none align-middle"
+              className="font-serif-secondary text-xl md:text-2xl lg:text-3xl font-extrabold leading-tight"
               style={{ textShadow: "0 1px 1px rgba(0,0,0,0.1)" }}
             >
               Markéta
             </span>
-            <span className="font-serif-secondary text-sm md:text-base font-light leading-none align-middle">
+            <span className="font-serif-secondary text-xs md:text-sm font-light leading-tight">
               TheOnlineShop
             </span>
           </div>

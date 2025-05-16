@@ -53,7 +53,7 @@ export default function ProductDetail({ product, onAddToCart }: Props) {
 
       {showGoToCart && (
         <Link href="/cart">
-          <button className="fixed bottom-6 right-6 bg-black text-white py-3 px-6 rounded-full shadow-lg cursor-pointer">
+          <button className="fixed bottom-6 sm:bottom-10 md:bottom-14 right-4 sm:right-6 bg-black text-white py-3 px-6 rounded-full shadow-lg cursor-pointer z-50">
             Go to Cart
           </button>
         </Link>
