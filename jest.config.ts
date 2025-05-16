@@ -1,19 +1,27 @@
 import type { Config } from "jest";
+import nextJest from "next/jest";
 
-const config: Config = {
-  preset: "ts-jest",
+const createJestConfig = nextJest({
+  dir: "./",
+});
+
+const customConfig: Config = {
+  setupFilesAfterEnv: ["<rootDir>/jest.setup.ts"],
   testEnvironment: "jsdom",
-  setupFilesAfterEnv: ["<rootDir>/jest.setup.ts"], // This will include the setup file
   moduleNameMapper: {
-    "^@/(.*)$": "<rootDir>/src/$1", // Support for absolute imports (using @)
-    "^next/router$": "next-router-mock", // Mocking Next.js router
+    "^@/(.*)$": "<rootDir>/src/$1",
   },
-  transform: {
-    "^.+\\.(ts|tsx)$": "ts-jest",
-  },
+  testPathIgnorePatterns: ["/node_modules/", "/.next/"],
+  transformIgnorePatterns: [
+    "/node_modules/(?!next|next/dist|next/router|next/navigation)",
+  ],
   collectCoverageFrom: [
-    "src/**/*.{ts,tsx}", // Include all TypeScript files
+    "src/**/*.{ts,tsx}",
+    "!**/*.d.ts",
+    "!**/node_modules/**",
   ],
 };
 
-export default config;
+// createJestConfig is exported this way to ensure that next/jest can load the Next.js config which
+// is async
+export default createJestConfig(customConfig);

@@ -13,7 +13,10 @@ describe("ContactPage", () => {
       expect(
         screen.getByText("Subject must be at least 3 characters."),
       ).toBeInTheDocument();
-      expect(screen.getByText("Enter a valid email.")).toBeInTheDocument();
+      expect(
+        screen.getByText("Please enter a valid email address."),
+      ).toBeInTheDocument();
+
       expect(
         screen.getByText("Message must be at least 3 characters."),
       ).toBeInTheDocument();
@@ -28,7 +31,9 @@ describe("ContactPage", () => {
     fireEvent.click(screen.getByText("Send Message"));
 
     await waitFor(() => {
-      expect(screen.getByText("Enter a valid email.")).toBeInTheDocument();
+      expect(
+        screen.getByText("Please enter a valid email address."),
+      ).toBeInTheDocument();
     });
   });
 

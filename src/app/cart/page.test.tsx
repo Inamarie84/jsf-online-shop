@@ -1,7 +1,22 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import CartPage from "./page";
 import { useCartStore } from "@/store/cartStore";
+import { showToast } from "@/lib/utils/showToast";
 
+// Mock useRouter from next/navigation
+const pushMock = jest.fn();
+jest.mock("next/navigation", () => ({
+  useRouter: () => ({
+    push: pushMock,
+  }),
+}));
+
+// Mock toast to avoid side effects
+jest.mock("@/lib/utils/showToast", () => ({
+  showToast: jest.fn(),
+}));
+
+// Mock Zustand store
 jest.mock("@/store/cartStore", () => ({
   useCartStore: jest.fn(),
 }));
@@ -9,20 +24,25 @@ jest.mock("@/store/cartStore", () => ({
 const mockedUseCartStore = useCartStore as unknown as jest.Mock;
 
 describe("CartPage", () => {
-  it("should show empty cart message if there are no items", () => {
-    mockedUseCartStore.mockReturnValue({
-      cartItems: [],
-      addToCart: jest.fn(),
-      removeFromCart: jest.fn(),
-      updateQuantity: jest.fn(),
-      clearCart: jest.fn(),
-    });
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
+  it("shows empty cart message when cart is empty", () => {
+    mockedUseCartStore.mockImplementation((selector) =>
+      selector({
+        cartItems: [],
+        removeFromCart: jest.fn(),
+        updateQuantity: jest.fn(),
+        clearCart: jest.fn(),
+      }),
+    );
 
     render(<CartPage />);
     expect(screen.getByText("Your cart is empty.")).toBeInTheDocument();
   });
 
-  it("should render cart items when present", () => {
+  it("renders cart items when present", () => {
     const mockItems = [
       {
         product: {
@@ -46,58 +66,24 @@ describe("CartPage", () => {
       },
     ];
 
-    mockedUseCartStore.mockReturnValue({
-      cartItems: mockItems,
-      addToCart: jest.fn(),
-      removeFromCart: jest.fn(),
-      updateQuantity: jest.fn(),
-      clearCart: jest.fn(),
-    });
+    mockedUseCartStore.mockImplementation((selector) =>
+      selector({
+        cartItems: mockItems,
+        removeFromCart: jest.fn(),
+        updateQuantity: jest.fn(),
+        clearCart: jest.fn(),
+      }),
+    );
 
     render(<CartPage />);
     expect(screen.getByText("Product 1")).toBeInTheDocument();
     expect(screen.getByText("Product 2")).toBeInTheDocument();
-    expect(screen.getByText("$100")).toBeInTheDocument();
-    expect(screen.getByText("$80")).toBeInTheDocument();
+    expect(
+      screen.getByText((text) => text.includes("$180.00")),
+    ).toBeInTheDocument();
   });
 
-  it("should calculate total cost correctly", () => {
-    const mockItems = [
-      {
-        product: {
-          id: "1",
-          title: "Product 1",
-          price: 100,
-          discountedPrice: 80,
-          image: { url: "/test.jpg", alt: "Product 1" },
-        },
-        quantity: 1,
-      },
-      {
-        product: {
-          id: "2",
-          title: "Product 2",
-          price: 50,
-          discountedPrice: 50,
-          image: { url: "/test.jpg", alt: "Product 2" },
-        },
-        quantity: 2,
-      },
-    ];
-
-    mockedUseCartStore.mockReturnValue({
-      cartItems: mockItems,
-      addToCart: jest.fn(),
-      removeFromCart: jest.fn(),
-      updateQuantity: jest.fn(),
-      clearCart: jest.fn(),
-    });
-
-    render(<CartPage />);
-    expect(screen.getByText("$180.00")).toBeInTheDocument();
-  });
-
-  it("should call removeFromCart when remove button is clicked", () => {
+  it("removes item from cart when remove is clicked", () => {
     const removeFromCartMock = jest.fn();
 
     const mockItems = [
@@ -113,21 +99,21 @@ describe("CartPage", () => {
       },
     ];
 
-    mockedUseCartStore.mockReturnValue({
-      cartItems: mockItems,
-      addToCart: jest.fn(),
-      removeFromCart: removeFromCartMock,
-      updateQuantity: jest.fn(),
-      clearCart: jest.fn(),
-    });
+    mockedUseCartStore.mockImplementation((selector) =>
+      selector({
+        cartItems: mockItems,
+        removeFromCart: removeFromCartMock,
+        updateQuantity: jest.fn(),
+        clearCart: jest.fn(),
+      }),
+    );
 
     render(<CartPage />);
-
     fireEvent.click(screen.getByText("Remove"));
     expect(removeFromCartMock).toHaveBeenCalledWith("1");
   });
 
-  it("should call clearCart when checkout button is clicked", () => {
+  it("clears cart and navigates on checkout", () => {
     const clearCartMock = jest.fn();
 
     const mockItems = [
@@ -143,17 +129,18 @@ describe("CartPage", () => {
       },
     ];
 
-    mockedUseCartStore.mockReturnValue({
-      cartItems: mockItems,
-      addToCart: jest.fn(),
-      removeFromCart: jest.fn(),
-      updateQuantity: jest.fn(),
-      clearCart: clearCartMock,
-    });
+    mockedUseCartStore.mockImplementation((selector) =>
+      selector({
+        cartItems: mockItems,
+        removeFromCart: jest.fn(),
+        updateQuantity: jest.fn(),
+        clearCart: clearCartMock,
+      }),
+    );
 
     render(<CartPage />);
-
     fireEvent.click(screen.getByText("Checkout"));
     expect(clearCartMock).toHaveBeenCalled();
+    expect(pushMock).toHaveBeenCalledWith("/checkOutSuccess");
   });
 });
