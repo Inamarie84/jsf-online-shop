@@ -55,7 +55,7 @@ export function ProductCard({ product }: ProductCardProps) {
           className="main-button mt-4 text-sm text-center
         "
         >
-          View Item
+          View Product
         </Link>
       </div>
     </div>

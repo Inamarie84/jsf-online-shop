@@ -23,7 +23,7 @@ This project is a fully functional e-commerce store built with **Next.js**, **Re
 
 ## API
 
-This e-commerce store fetches product data from the **Noroff API**. You can retrieve individual products by appending their unique product ID to the API URL, like so:
+This e-commerce store fetches product data from the **Noroff API**. You can retrieve individual products by appending their unique product ID to the API URL.
 
 ## Pages
 
