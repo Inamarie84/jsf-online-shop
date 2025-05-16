@@ -1,7 +1,7 @@
 "use client";
 
 import { TProduct } from "@/lib/types/products";
-import Image from "next/image";
+import { ImageWithFallback } from "@/common/ImageWithFallback";
 import Link from "next/link";
 
 import ProductPrice from "@/components/Product/ProductPrice";
@@ -23,18 +23,8 @@ export function ProductCard({ product }: ProductCardProps) {
   return (
     <div className="relative  rounded-lg shadow hover:shadow-lg overflow-hidden flex flex-col h-full ">
       <Link href={`/product/${id}`} className="relative w-full h-48 block">
-        {image?.url ? (
-          <Image
-            src={image.url}
-            alt={image.alt || title}
-            fill
-            className="object-cover"
-          />
-        ) : (
-          <div className="w-full h-full bg-gray-200 flex items-center justify-center text-gray-600 text-sm">
-            No image available
-          </div>
-        )}
+        <ImageWithFallback src={image?.url} alt={image?.alt} title={title} />
+
         {hasDiscount && (
           <div
             className="absolute top-2 left-2 text-white text-xs font-bold px-2 py-1 rounded"

@@ -1,7 +1,7 @@
 "use client";
 
 import { TProduct } from "@/lib/types/products";
-import { ProductCard } from "@/components/Product/ProductCard";
+import { ProductCard } from "@/components/Products/ProductCard";
 
 type ProductCardGridProps = {
   products: TProduct[];
