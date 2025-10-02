@@ -1,8 +1,15 @@
-# E-Commerce Store
+# Markéta — The Online Shop (Next.js + TypeScript)
+
+**Live demo:** https://jsf-online-shop.vercel.app/  
+**Repository:** https://github.com/Inamarie84/jsf-online-shop
+
+---
 
 ## Overview
 
 This project is a fully functional e-commerce store built with **Next.js**, **React**, **TypeScript**, **Zustand**, and **Tailwind CSS**. It provides an intuitive user experience with product browsing, cart management, and a successful checkout process. The store utilizes a custom-built API to fetch product data and integrate a responsive UI for seamless interaction across devices.
+
+---
 
 ## Key Features
 
@@ -13,116 +20,85 @@ This project is a fully functional e-commerce store built with **Next.js**, **Re
 - **Contact Page**: A contact form with validation to collect user inquiries.
 - **Responsive Design**: Optimized for both desktop and mobile devices.
 
-## Technologies Used
+---
 
-- **Next.js**: A React framework for building server-rendered and statically generated web applications.
-- **React**: JavaScript library for building user interfaces.
-- **TypeScript**: Superset of JavaScript that adds static typing.
-- **Zustand**: A state management library used to manage global application state (e.g., cart state).
-- **Tailwind CSS**: A utility-first CSS framework used to build custom and responsive designs.
+## Tech Stack
+
+- **Next.js 14+**, **React 18+**
+- **TypeScript** (strict)
+- **Zustand** for cart state
+- **Tailwind CSS** for styling
+- **Jest + React Testing Library** (setup present; tests can be added later)
+
+---
 
 ## API
 
-This e-commerce store fetches product data from the **Noroff API**. You can retrieve individual products by appending their unique product ID to the API URL.
+Data is fetched from the **Noroff Online Shop API** (list products + product by id).
 
-## Pages
+---
 
-### 1. Homepage
+## Recent Improvements (Portfolio 2)
 
-The homepage lists all available products and features a search bar that filters products by name. Each product is displayed as a card with a **View Product** button, leading to the individual product page.
+- Added JSDoc comments to core product components for clarity and developer experience.
+- Replaced array-index React keys in the loading grid with stable keys to avoid reconciliation glitches.
+- Type hygiene: removed unused Jest types from `tsconfig.json`, fixed a typo in `api.ts`, and added a global type declaration file.
 
-### 2. Product Page
+---
 
-The individual product page displays:
+## Getting Started
 
-- Product title, description, and image.
-- Price and any available discounts.
-- User reviews (if available).
-- An **Add to Cart** button to add the product to the shopping cart.
+### Prerequisites
 
-### 3. Cart Page
+- Node **18+**
+- npm **9+**
 
-The cart page displays the products added to the cart and calculates the total price. It includes a **Checkout** button that navigates to the checkout page.
+### Installation
 
-### 4. Checkout Success Page
-
-This page displays a success message when an order is successfully placed. It also provides a link to go back to the store and clears the cart.
-
-### 5. Contact Page
-
-The contact page features a form with the following fields:
-
-- Full Name (required, minimum 3 characters)
-- Subject (required, minimum 3 characters)
-- Email (required, valid email format)
-- Body (required, minimum 3 characters)
-
-### Layout
-
-All pages are wrapped in a `Layout` component, which includes a header (with a cart icon showing the number of items in the cart) and a footer.
-
-## Installation
-
-To run this project locally, follow these steps:
-
-1. Clone the repository:
-
-   ```bash
-   git clone https://github.com/Inamarie84/jsf-online-shop.git
-
-   ```
-
-2. Navigate to the project directory:
+Clone the repo (HTTPS) and install dependencies:
 
 ```bash
+git clone https://github.com/Inamarie84/jsf-online-shop.git
 cd jsf-online-shop
-
-```
-
-3. Install dependencies:
-
-```bash
 npm install
 
 ```
 
-4. Run the development server:
+### Development
+
+Start the dev server (opens at http://localhost:3000):
 
 ```bash
 npm run dev
 
 ```
 
-5. Open your browser and visit http://localhost:3000 to view the store.
+### Production
 
-## Features Breakdown
+```bash
+npm run build
+npm start
 
-### Home Page
+```
 
-- A list of all products fetched from the Noroff API.
-- A dynamic search bar that filters the product list as the user types.
-- Each product card links to the individual product page.
+---
 
-### Product Page
+## Pages
 
-- Displays detailed product information (title, description, price, reviews).
-- An **Add to Cart** button allows users to add items to the cart.
+- `/` - Homepage (catalog + search)
+- `/product/[id]` - Individual product page
+- `/cart` - Cart page
+- `/checkout-success` - Checkout success page
+- `/contact` - Contact page
 
-### Cart Page
+---
 
-- Displays all items added to the cart with their details (name, quantity, price).
-- Calculates and displays the total cost of items in the cart.
-- A **Checkout** button leads to the checkout success page.
+## Accessibility & Performance
 
-### Checkout Success Page
-
-- Displays a success message once the user completes the checkout process.
-- Provides a link to return to the homepage.
-
-### Contact Page
-
-- Includes a contact form with validations for Full Name, Subject, Email, and Body.
-- Submitting the form logs the form data to the console.
+- Semantic headings/labels
+- Intrinsic image sizing & responsive layout
+- Stable keys in lists (prevents UI glitches)
+- Visible focus states on interactive controls
 
 ## State Management
 
@@ -140,6 +116,12 @@ The project has been deployed to **Vercel**. You can access the live version of 
 ## Conclusion
 
 This project demonstrates the integration of several modern web technologies to build a responsive and interactive e-commerce store. It features robust state management with **Zustand**, dynamic data fetching using the **Noroff API**, and responsive design with **Tailwind CSS**.
+
+---
+
+## Contact
+
+[My LinkedIn page](https://www.linkedin.com/in/ina-marie-forseth-66a7b232/)
 
 ```
 
