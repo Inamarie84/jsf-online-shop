@@ -1,10 +1,20 @@
+type ProductPriceProps = {
+  /** Base (original) price */
+  price: number;
+  /** Discounted price; when lower than `price`, discount UI is shown */
+  discountedPrice: number;
+};
+
+/**
+ * Displays pricing with discount state:
+ * - Strikes through the original price
+ * - Highlights current price
+ * - Shows discount percentage and “You save …”
+ */
 export default function ProductPrice({
   price,
   discountedPrice,
-}: {
-  price: number;
-  discountedPrice: number;
-}) {
+}: ProductPriceProps) {
   const hasDiscount = discountedPrice < price;
   const discountPercentage = hasDiscount
     ? Math.round(((price - discountedPrice) / price) * 100)

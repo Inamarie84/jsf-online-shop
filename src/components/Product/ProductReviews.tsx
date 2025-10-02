@@ -1,15 +1,21 @@
-export default function ProductReviews({
-  reviews,
-}: {
-  reviews?: {
-    id: string;
-    username: string;
-    rating: number;
-    description: string;
-  }[];
-}) {
-  const safeReviews = reviews || [];
+type ProductReview = {
+  id: string;
+  username: string;
+  rating: number;
+  description: string;
+};
 
+type ProductReviewsProps = {
+  /** Optional list of product reviews; hidden if empty */
+  reviews?: ProductReview[];
+};
+
+/**
+ * Renders a simple list of reviews (username, rating, description).
+ * Returns null when there are no reviews.
+ */
+export default function ProductReviews({ reviews }: ProductReviewsProps) {
+  const safeReviews = reviews || [];
   if (safeReviews.length === 0) return null;
 
   return (

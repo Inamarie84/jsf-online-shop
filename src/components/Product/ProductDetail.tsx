@@ -8,12 +8,22 @@ import { TProduct } from "@/lib/types/products";
 import { useState } from "react";
 import { ImageWithFallback } from "@/common/ImageWithFallback";
 
-type Props = {
+type ProductDetailProps = {
+  /** Full product entity for the detail page */
   product: TProduct;
+  /** Callback fired when user clicks “Add to Cart” */
   onAddToCart: () => void;
 };
 
-export default function ProductDetail({ product, onAddToCart }: Props) {
+/**
+ * Full product detail view with image, title, description, pricing,
+ * tags, reviews and add-to-cart handler. Shows a floating “Go to Cart”
+ * CTA after adding to cart.
+ */
+export default function ProductDetail({
+  product,
+  onAddToCart,
+}: ProductDetailProps) {
   const [showGoToCart, setShowGoToCart] = useState(false);
 
   const handleClick = () => {

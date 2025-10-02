@@ -1,8 +1,7 @@
+// jest.setup.ts
 import "@testing-library/jest-dom";
-import { NextRouter } from "next/router";
-import { TextEncoder, TextDecoder } from "util";
 
-// Mock Next.js app router navigation
+// Mock Next.js app router/navigation hooks (App Router)
 jest.mock("next/navigation", () => ({
   useRouter: () => ({
     push: jest.fn(),
@@ -16,8 +15,9 @@ jest.mock("next/navigation", () => ({
   useSearchParams: () => new URLSearchParams(),
 }));
 
-// Create a mock for Next.js router
-const mockRouter: NextRouter = {
+// Light-weight router mock you can attach to globals for tests that need it.
+// (No NextRouter type import; keep this as `unknown` or make your own interface.)
+const mockRouter = {
   push: jest.fn(),
   replace: jest.fn(),
   query: {},
@@ -35,12 +35,20 @@ const mockRouter: NextRouter = {
   isFallback: false,
   isReady: true,
   isPreview: false,
-};
+} as const;
 
-// Mock window.matchMedia
+// Attach to globalThis with a typed shape (no `any`)
+(globalThis as unknown as { mockRouter: typeof mockRouter }).mockRouter =
+  mockRouter;
+
+// Polyfills (Node 18+ already has these; this keeps TS happy)
+global.TextEncoder = global.TextEncoder;
+global.TextDecoder = global.TextDecoder as typeof global.TextDecoder;
+
+// Mock matchMedia for tests
 Object.defineProperty(window, "matchMedia", {
   writable: true,
-  value: jest.fn().mockImplementation((query) => ({
+  value: jest.fn().mockImplementation((query: string) => ({
     matches: false,
     media: query,
     onchange: null,
@@ -51,8 +59,3 @@ Object.defineProperty(window, "matchMedia", {
     dispatchEvent: jest.fn(),
   })),
 });
-
-// Set up globals
-(globalThis as any).mockRouter = mockRouter;
-global.TextEncoder = TextEncoder;
-global.TextDecoder = TextDecoder as any;

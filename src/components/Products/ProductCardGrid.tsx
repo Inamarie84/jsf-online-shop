@@ -1,13 +1,18 @@
 "use client";
 
-import { TProduct } from "@/lib/types/products"; // keep your path convention
+import { TProduct } from "@/lib/types/products";
 import { ProductCard } from "@/components/Products/ProductCard";
 
 type ProductCardGridProps = {
+  /** List of products to render */
   products: TProduct[];
+  /** When true, shows skeleton placeholders instead of cards */
   loading: boolean;
 };
 
+/**
+ * Visual placeholder skeleton for a product card while loading.
+ */
 function SkeletonCard() {
   return (
     <div className="animate-pulse border rounded-lg p-4 shadow flex flex-col gap-3">
@@ -20,8 +25,14 @@ function SkeletonCard() {
   );
 }
 
+/** Stable keys for skeletons to avoid index-as-key */
 const SKELETON_KEYS = ["sk1", "sk2", "sk3", "sk4", "sk5", "sk6", "sk7", "sk8"];
 
+/**
+ * Responsive grid of product cards with a loading state.
+ * - Shows skeletons while `loading` is true
+ * - Renders cards when `products` are available
+ */
 export function ProductCardGrid({ products, loading }: ProductCardGridProps) {
   if (loading) {
     return (
