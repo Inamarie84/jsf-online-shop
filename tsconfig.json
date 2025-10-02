@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "noImplicitAny": false,
-    "types": ["jest", "node"],
+    "types": ["node"],
     "target": "ES2017",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,

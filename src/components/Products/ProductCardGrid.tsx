@@ -1,6 +1,6 @@
 "use client";
 
-import { TProduct } from "@/lib/types/products";
+import { TProduct } from "@/lib/types/products"; // keep your path convention
 import { ProductCard } from "@/components/Products/ProductCard";
 
 type ProductCardGridProps = {
@@ -20,12 +20,14 @@ function SkeletonCard() {
   );
 }
 
+const SKELETON_KEYS = ["sk1", "sk2", "sk3", "sk4", "sk5", "sk6", "sk7", "sk8"];
+
 export function ProductCardGrid({ products, loading }: ProductCardGridProps) {
   if (loading) {
     return (
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        {Array.from({ length: 8 }).map((_, i) => (
-          <SkeletonCard key={i} />
+        {SKELETON_KEYS.map((key) => (
+          <SkeletonCard key={key} />
         ))}
       </div>
     );
@@ -38,7 +40,9 @@ export function ProductCardGrid({ products, loading }: ProductCardGridProps) {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
       {products.map((product) => (
-        <ProductCard key={product.id} product={product} />
+        <div key={product.id}>
+          <ProductCard product={product} />
+        </div>
       ))}
     </div>
   );
