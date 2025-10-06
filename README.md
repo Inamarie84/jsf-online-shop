@@ -1,6 +1,6 @@
 # Markéta — The Online Shop (Next.js + TypeScript)
 
-![Markéta — The Online Shop homepage](/public/images/javascript-frameworks-hero.webp)
+![homepage](/public/images/javascript-frameworks-hero.webp)
 
 **Live demo:** https://jsf-online-shop.vercel.app/  
 **Repository:** https://github.com/Inamarie84/jsf-online-shop
